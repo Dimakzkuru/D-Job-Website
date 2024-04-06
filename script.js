@@ -119,44 +119,64 @@ const filterJobsByDropDowns = function (option, filteredValue) {
 };
 
 // Filter Jobs by Input fields
-const jobTitleInput = document.querySelector("#jobSearch");
-const jobLocationInput = document.querySelector("#jobLocation");
-const jobChecker = (option, value) =>
-  option.textContent.toLowerCase().includes(`${value}`);
+let jobSearchInput2 = document.querySelector("#jobSearch2");
+let jobLocationInput2 = document.querySelector("#jobLocation2");
 
-const filterJobsByInput = function (e) {
-  e.preventDefault();
-  const inputValue = e.target.value.toLowerCase();
+const filterJobsByInput = function () {
+  let searchValue = jobSearchInput2.value.toLowerCase();
+  let locationValue = jobLocationInput2.value.toLowerCase();
   jobContainers.forEach((job) => {
-    const jobTitle = job.querySelector("h3");
-    const jobCategory = job.querySelector(".category");
-    const jobCompany = job.querySelector(".company");
-    console.log(jobCategory);
-    if (
-      jobChecker(jobTitle, inputValue) ||
-      jobChecker(jobCategory, inputValue) ||
-      jobChecker(jobCompany, inputValue)
-    ) {
-      jobTitle.closest(".box").style.display = "grid";
-    } else {
-      jobTitle.closest(".box").style.display = "none";
-    }
+    const jobTitle = job.querySelector("h3").textContent.toLowerCase();
+    const jobCategory = job
+      .querySelector(".category")
+      .textContent.toLowerCase();
+    const jobCompany = job.querySelector(".company").textContent.toLowerCase();
+    const jobLocation = job
+      .querySelector(".location")
+      .textContent.toLowerCase();
+
+    const matchesSearch =
+      jobTitle.includes(searchValue) ||
+      jobCategory.includes(searchValue) ||
+      jobCompany.includes(searchValue);
+    const matchesLocation = jobLocation.includes(locationValue);
+    job.style.display = matchesSearch && matchesLocation ? "grid" : "none";
   });
 };
 
-const filterJobsByJobLocationInput = function (e) {
-  e.preventDefault();
-  const inputValue = e.target.value.toLowerCase();
-  jobContainers.forEach((job) => {
-    const jobLocation = job.querySelector(".location");
-    jobLocation.closest(".box").style.display = jobChecker(
-      jobLocation,
-      inputValue
-    )
-      ? "grid"
-      : "none";
-  });
-};
+jobSearchInput2?.addEventListener("input", filterJobsByInput);
+jobLocationInput2?.addEventListener("input", filterJobsByInput);
 
-jobTitleInput.addEventListener("input", filterJobsByInput);
-jobLocationInput.addEventListener("input", filterJobsByJobLocationInput);
+// From Index.html Input Forms
+
+const params = new URLSearchParams(window.location.search);
+if (params.has("jobSearch1")) {
+  jobSearchInput2.value = params.get("jobSearch1");
+}
+
+if (params.has("jobLocation1")) {
+  jobLocationInput2.value = params.get("jobLocation1");
+}
+filterJobsByInput();
+
+// From jobs.html Categories : Apply ScrollIntoView
+
+const jobCategoryContainer = document.querySelectorAll(".box-category");
+
+jobCategoryContainer.forEach((category) => {
+  category.addEventListener("click", function (e) {
+    const clickedCategory = category.querySelector("h3").textContent;
+
+    jobContainers.forEach((job) => {
+      const jobCategory = job.querySelector(".category");
+      job.closest(".box").style.display = jobCategory.textContent.includes(
+        `${clickedCategory}`
+      )
+        ? "grid"
+        : "none";
+    });
+    document
+      .querySelector("#jobs-section")
+      .scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+});

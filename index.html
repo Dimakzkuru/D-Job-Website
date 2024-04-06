@@ -10,6 +10,7 @@
     />
     <!-- Font Awesome Kit (for Icons) -->
     <script
+      defer
       src="https://kit.fontawesome.com/99531a5c7e.js"
       crossorigin="anonymous"
     ></script>
@@ -65,9 +66,19 @@
         </div>
         <div class="section1__form-container">
           <!-- Form elements go here (job keyword, job location, button) -->
-          <form>
-            <input type="text" placeholder="Job Keyword/Category/Company" />
-            <input type="text" placeholder="Job Location" />
+          <form class="jobSearchForm" action="jobs.html" method="GET">
+            <input
+              type="text"
+              placeholder="Job Keyword/Category/Company"
+              id="jobSearch1"
+              name="jobSearch1"
+            />
+            <input
+              type="text"
+              placeholder="Job Location"
+              id="jobLocation1"
+              name="jobLocation1"
+            />
             <button type="submit">Search</button>
           </form>
         </div>
@@ -113,17 +124,17 @@
           </div>
           <div class="box-category" id="category--7">
             <i class="fa-solid fa-computer" id="computer"></i>
-            <h3>IT & <br />Software Development</h3>
+            <h3>Customer Service / Call Center</h3>
             <span>2324 Jobs Available</span>
           </div>
           <div class="box-category" id="category--8">
             <i class="fa-solid fa-computer" id="computer"></i>
-            <h3>IT & <br />Software Development</h3>
+            <h3>HealthCare & Medical</h3>
             <span>2324 Jobs Available</span>
           </div>
           <div class="box-category" id="category--8">
             <i class="fa-solid fa-computer" id="computer"></i>
-            <h3>IT & <br />Software Development</h3>
+            <h3>Marketing & Communications</h3>
             <span>2324 Jobs Available</span>
           </div>
         </div>
