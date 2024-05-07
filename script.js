@@ -9,7 +9,8 @@ const header = document.querySelector(".header");
 const nav = document.querySelector(".nav");
 const navHeight = nav.getBoundingClientRect().height;
 const section1 = document.querySelector(".section--1");
-
+const menuBtn = document.querySelector(".menu-btn").children;
+console.log(menuBtn);
 // Smooth Scrolling for page navigation
 document.querySelectorAll(".nav__link").forEach((el) =>
   el.addEventListener("click", function (e) {
@@ -21,6 +22,7 @@ document.querySelectorAll(".nav__link").forEach((el) =>
         behavior: "smooth",
         block: "start",
       });
+      menuBtn.style.display = "block" ? "none" : "block";
     }
   })
 );
@@ -86,7 +88,6 @@ const formToggle = function (id) {
 // Close Modal Event
 const closeModal = function (e) {
   e.preventDefault();
-
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
 };
@@ -94,7 +95,7 @@ const closeModal = function (e) {
 overlay.addEventListener("click", closeModal);
 closeModalBtn.addEventListener("click", closeModal);
 
-// Filter Jobs
+// Filter Jobs Section
 const jobContainers = document.querySelectorAll(".box");
 const jobSection = document.querySelector(".job-section");
 const dropdownAnchors = document.querySelectorAll(".dropdown-menu a");
@@ -121,10 +122,18 @@ const filterJobsByDropDowns = function (option, filteredValue) {
 // Filter Jobs by Input fields
 let jobSearchInput2 = document.querySelector("#jobSearch2");
 let jobLocationInput2 = document.querySelector("#jobLocation2");
+// From Index.html Input Forms
+const params = new URLSearchParams(window.location.search);
+if (params.has("jobSearch1")) {
+  jobSearchInput2.value = params.get("jobSearch1");
+}
 
+if (params.has("jobLocation1")) {
+  jobLocationInput2.value = params.get("jobLocation1");
+}
 const filterJobsByInput = function () {
-  let searchValue = jobSearchInput2.value.toLowerCase();
-  let locationValue = jobLocationInput2.value.toLowerCase();
+  let searchValue = jobSearchInput2?.value.toLowerCase();
+  let locationValue = jobLocationInput2?.value.toLowerCase();
   jobContainers.forEach((job) => {
     const jobTitle = job.querySelector("h3").textContent.toLowerCase();
     const jobCategory = job
@@ -143,21 +152,19 @@ const filterJobsByInput = function () {
     job.style.display = matchesSearch && matchesLocation ? "grid" : "none";
   });
 };
-
+filterJobsByInput();
 jobSearchInput2?.addEventListener("input", filterJobsByInput);
 jobLocationInput2?.addEventListener("input", filterJobsByInput);
+// Prevent Page  Refresh whenever user presses enter key to submit form
+const preventPageRefresh = function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // Prevent page refresh
+    filterJobsByInput();
+  }
+};
+jobSearchInput2?.addEventListener("keydown", preventPageRefresh);
 
-// From Index.html Input Forms
-
-const params = new URLSearchParams(window.location.search);
-if (params.has("jobSearch1")) {
-  jobSearchInput2.value = params.get("jobSearch1");
-}
-
-if (params.has("jobLocation1")) {
-  jobLocationInput2.value = params.get("jobLocation1");
-}
-filterJobsByInput();
+jobLocationInput2?.addEventListener("keydown", preventPageRefresh);
 
 // From jobs.html Categories : Apply ScrollIntoView
 

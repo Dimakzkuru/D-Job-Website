@@ -28,6 +28,10 @@
             style="height: 45px; opacity: 1"
             href="index.html"
         /></a>
+        <input type="checkbox" id="click" />
+        <label class="menu-btn" for="click"
+          ><i class="fa-solid fa-bars"></i
+        ></label>
         <ul class="nav__links">
           <li class="nav__item">
             <a class="nav__link" href="index.html">Home</a>
@@ -39,13 +43,15 @@
             <a class="nav__link" href="#about-us">About Us</a>
           </li>
           <li class="nav__item">
-            <a class="nav__link" href="#jobs-section">All Jobs</a>
+            <a class="nav__link active" href="#jobs-section">All Jobs</a>
           </li>
-          <li class="nav__login" data-tab="1">
-            <a class="nav__link" href="">Login</a>
-          </li>
-          <div class="vertical-line"></div>
-          <li class="nav__signup" data-tab="2"><a href="">Signup</a></li>
+          <div class="login-signup">
+            <li class="nav__login" data-tab="1">
+              <a href="">Login</a>
+            </li>
+            <div class="vertical-line"></div>
+            <li class="nav__signup" data-tab="2"><a href="">Signup</a></li>
+          </div>
         </ul>
       </nav>
     </header>
@@ -239,7 +245,7 @@
             </div>
             <div class="info2">
               <p class="salary">₱15k-20k</p>
-              <p class="type">Full Time</p>
+              <p class="type">Part Time</p>
             </div>
             <p class="dateposted">4 days ago</p>
           </div>
@@ -364,7 +370,7 @@
               <span>Where is D-Job</span>
             </button>
             <button class="btn profile__tab profile__tab--3" data-tab="3">
-              <span>Why D-Job D</span>
+              <span>Why D-Job</span>
             </button>
           </div>
 

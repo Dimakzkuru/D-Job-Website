@@ -28,9 +28,13 @@
             style="height: 45px; opacity: 1"
             href="index.html"
         /></a>
+        <input type="checkbox" id="click" />
+        <label class="menu-btn" for="click"
+          ><i class="fa-solid fa-bars"></i
+        ></label>
         <ul class="nav__links">
           <li class="nav__item">
-            <a class="nav__link" href="#header">Home</a>
+            <a class="nav__link active" href="#header">Home</a>
           </li>
           <li class="nav__item">
             <a class="nav__link" href="#job-category">Categories</a>
@@ -41,11 +45,13 @@
           <li class="nav__item">
             <a class="nav__link" href="jobs.html">All Jobs</a>
           </li>
-          <li class="nav__login" data-tab="1">
-            <a class="nav__link" href="">Login</a>
-          </li>
-          <div class="vertical-line"></div>
-          <li class="nav__signup" data-tab="2"><a href="">Signup</a></li>
+          <div class="login-signup">
+            <li class="nav__login" data-tab="1">
+              <a class="nav__link" href="">Login</a>
+            </li>
+            <div class="vertical-line"></div>
+            <li class="nav__signup" data-tab="2"><a href="">Signup</a></li>
+          </div>
         </ul>
       </nav>
     </header>
@@ -82,7 +88,6 @@
             <button type="submit">Search</button>
           </form>
         </div>
-        <img src="assets/Job-Image.jpg" alt="Dream-job" class="section1--img" />
       </section>
       <!-- Section 1 ENDS HERE -->
       <!-- Section 2 STARTS HERE: JOB CATEGORIES -->
@@ -155,7 +160,7 @@
               <span>Where is D-Job</span>
             </button>
             <button class="btn profile__tab profile__tab--3" data-tab="3">
-              <span>Why D-Job D</span>
+              <span>Why D-Job</span>
             </button>
           </div>
 
@@ -163,32 +168,38 @@
             class="profile__content profile__content--1 profile__content--active"
           >
             <h3>What is D Job?</h3>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste quas
-            eveniet dolor tempora quidem officiis tenetur consequatur aperiam
-            quos odio veritatis est earum doloremque, quisquam rem maxime ex
-            dicta debitis?
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
+              quas eveniet dolor tempora quidem officiis tenetur consequatur
+              aperiam quos odio veritatis est earum doloremque, quisquam rem
+              maxime ex dicta debitis?
+            </p>
           </div>
           <div class="profile__content profile__content--2">
             <h3>Where is D Job?</h3>
-            A company can be defined as an "artificial person", invisible,
-            intangible, created by or under law, with a discrete legal capacity
-            (or "personality"), perpetual succession, and a common seal. Except
-            for some senior positions, companies remain unaffected by the death,
-            insanity, or insolvency of an individual member. The English word,
-            "company," has its origins in the Old French term compagnie (first
-            recorded in 1150), meaning "society, friendship, intimacy; body of
-            soldiers", which came from the Late Latin word companio ("one who
-            eats bread with you"), first attested in the Salic law (c. AD 500)
-            as a calque of the Germanic expression gahlaibo (literally, "with
-            bread"), related to Old High German galeipo ("companion") and to
-            Gothic gahlaiba ("messmate").
+            <p>
+              A company can be defined as an "artificial person", invisible,
+              intangible, created by or under law, with a discrete legal
+              capacity (or "personality"), perpetual succession, and a common
+              seal. Except for some senior positions, companies remain
+              unaffected by the death, insanity, or insolvency of an individual
+              member. The English word, "company," has its origins in the Old
+              French term compagnie (first recorded in 1150), meaning "society,
+              friendship, intimacy; body of soldiers", which came from the Late
+              Latin word companio ("one who eats bread with you"), first
+              attested in the Salic law (c. AD 500) as a calque of the Germanic
+              expression gahlaibo (literally, "with bread"), related to Old High
+              German galeipo ("companion") and to Gothic gahlaiba ("messmate").
+            </p>
           </div>
           <div class="profile__content profile__content--3">
             <h3>Why D Job?</h3>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste quas
-            eveniet dolor tempora quidem officiis tenetur consequatur aperiam
-            quos odio veritatis est earum doloremque, quisquam rem maxime ex
-            dicta debitis?
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
+              quas eveniet dolor tempora quidem officiis tenetur consequatur
+              aperiam quos odio veritatis est earum doloremque, quisquam rem
+              maxime ex dicta debitis?
+            </p>
           </div>
         </div>
       </section>
@@ -205,7 +216,7 @@
       <div class="row">
         <p>
           &copy; 2024 Created by &nbsp;
-          <span style="color: rgb(136, 248, 98)"> Dimaks</span>. All rights
+          <span style="color: rgb(31, 29, 71)"> Dimaks</span>. All rights
           reserved.
         </p>
       </div>
